@@ -1,8 +1,8 @@
-class OptionQuestionModel{
+class OptionQuestionEntity{
   final String text;
   final bool correctAnswer;
 
-  const OptionQuestionModel({
+  const OptionQuestionEntity({
     required this.text,
     required this.correctAnswer
   });

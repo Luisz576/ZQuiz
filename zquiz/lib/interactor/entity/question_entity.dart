@@ -1,4 +1,4 @@
-import 'package:zquiz/interactor/models/option_question_model.dart';
+import 'package:zquiz/interactor/entity/option_question_entity.dart';
 
 enum QuestionDifficulty{
   easy,
@@ -6,12 +6,12 @@ enum QuestionDifficulty{
   hard
 }
 
-class QuestionModel{
+class QuestionEntity{
   final String questionText, explanation, category;
-  final List<OptionQuestionModel> options;
+  final List<OptionQuestionEntity> options;
   final QuestionDifficulty difficulty;
-  
-  const QuestionModel({
+
+  const QuestionEntity({
     required this.category,
     required this.questionText,
     required this.explanation,

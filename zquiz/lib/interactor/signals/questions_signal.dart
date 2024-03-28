@@ -7,6 +7,11 @@ class QuestionSignals{
   QuestionSignals(this.repository);
 
   final Signal<QuestionsState> _state = signal(QuestionsState.start());
+  Signal<QuestionsState> get state => _state;
+
+  isLoading() => computed(() => _state.value.isLoading);
+  hasData() => computed(() => _state.value.questions.isNotEmpty);
+  hasError() => computed(() => _state.value.exception != null);
 
   fetchQuestions() async{
     _state.value = _state.value.setLoading();

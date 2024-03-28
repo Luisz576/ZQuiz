@@ -89,13 +89,14 @@ class _QuestionStepState extends State<QuestionStep> {
                       color: ZQuizColors.blackColor,
                     ),
                   ),
-                  Text(widget.question.explanation,
+                  Text(signal.hasSelected()() ? widget.question.explanation : "",
                     style: const TextStyle(
                       fontSize: ZquizDimensions.tinyFontSize,
                       color: ZQuizColors.blackColor,
                     ),
                   ),
-                  widget.question.explanation.isNotEmpty ? const SizedBox(height: ZquizDimensions.smallPadding) : Container(),
+                  (signal.hasSelected()() && widget.question.explanation.isNotEmpty)
+                  ? const SizedBox(height: ZquizDimensions.smallPadding) : Container(),
                 ],
               ),
             ),

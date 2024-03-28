@@ -43,7 +43,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
             color: ZQuizColors.whiteColor,
             fontWeight: FontWeight.bold,
             letterSpacing: 1,
-            fontSize: ZquizDimensions.largeFontSize
+            fontSize: ZquizDimensions.mediumFontSize
           ),
         ),
       ),

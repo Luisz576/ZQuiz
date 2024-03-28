@@ -34,6 +34,11 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image.asset("assets/images/logo.png",
+              fit: BoxFit.fill,
+              width: MediaQuery.of(context).size.width * 0.6,
+            ),
+            const SizedBox(height: ZquizDimensions.tinyPadding,),
             const Text("Welcome to the ZQuiz!",
               style: TextStyle(
                 color: ZQuizColors.blackColor,
@@ -41,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                 fontSize: ZquizDimensions.largeFontSize
               ),
             ),
-            const SizedBox(height: ZquizDimensions.mediumPadding,),
+            const SizedBox(height: ZquizDimensions.largePadding,),
             TextButton(
               style: TextButton.styleFrom(
                 backgroundColor: ZQuizColors.primaryColor,

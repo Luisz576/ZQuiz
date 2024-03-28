@@ -44,7 +44,7 @@ class QuestionOptionTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.75,
+                width: MediaQuery.of(context).size.width * 0.65,
                 child: Text(option.text,
                   style: TextStyle(
                     color: marked ? ZQuizColors.whiteColor : ZQuizColors.blackColor,

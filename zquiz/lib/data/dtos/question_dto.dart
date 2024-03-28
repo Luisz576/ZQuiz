@@ -39,7 +39,6 @@ class QuestionDTO extends QuestionEntity{
   QuestionDTO.empty() : super.empty();
 
   factory QuestionDTO.fromMap(dynamic map){
-    print(map);
     if(map is Map){
       if(map case {
         "question": String questionText,
@@ -49,7 +48,6 @@ class QuestionDTO extends QuestionEntity{
         "answers": Map answers,
         "correct_answers": Map correctAnswers,
       }){
-        print(explanation);
         return QuestionDTO(
           category: category,
           questionText: questionText,

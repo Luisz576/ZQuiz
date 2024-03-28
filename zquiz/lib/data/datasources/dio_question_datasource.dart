@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:zquiz/data/dtos/question_dto.dart';
 import 'package:zquiz/interactor/contracts/datasources/question_datasource.dart';
 import 'package:zquiz/interactor/entity/question_entity.dart';
 import 'package:zquiz/interactor/exception/question_exception.dart';
@@ -17,10 +18,8 @@ class DioQuestionDatasource implements IQuestionDatasource{
           "limit": amount
         }
       );
-      if(response is List<dynamic>){
-        print("aqui");
-      }else{
-        print("erro");
+      if(response.data is List){
+        return (response.data as List).map(QuestionDTO.fromMap).toList();
       }
       throw QuestionException("Invalid data from api");
     } on DioException catch(e, s){

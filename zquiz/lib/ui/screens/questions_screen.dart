@@ -32,7 +32,20 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
       appBar: AppBar(
         backgroundColor: ZQuizColors.secundaryColor,
         centerTitle: true,
-        title: const Text("ZQuiz - Let's Play!"),
+        leading: IconButton(
+          onPressed: () => Navigator.of(context).pop(),
+          icon: const Icon(Icons.arrow_back,
+            color: ZQuizColors.whiteColor,
+          ),
+        ),
+        title: const Text("ZQuiz - Let's Play!",
+          style: TextStyle(
+            color: ZQuizColors.whiteColor,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1,
+            fontSize: ZquizDimensions.largeFontSize
+          ),
+        ),
       ),
       backgroundColor: ZQuizColors.primaryBackgroundColor,
       body: Watch((context) => switch(questionsSignals.state.value){
@@ -42,7 +55,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
           ),
         ),
         ErrorQuestionsState() => const CenteredText(
-          text: "Um erro ocorreu",
+          text: "Error loading questions :(",
           style: TextStyle(
             color: ZQuizColors.primaryColor,
             fontSize: ZquizDimensions.largeFontSize,
@@ -53,7 +66,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
             questions: questions,
           )
           : const CenteredText(
-            text: "Não foi possível carregar questões :(",
+            text: "No question loaded :(",
             style: TextStyle(
               color: ZQuizColors.primaryColor,
               fontSize: ZquizDimensions.mediumFontSize,

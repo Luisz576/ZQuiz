@@ -36,4 +36,15 @@ class QuestionEntity{
     explanation = "",
     difficulty = QuestionDifficulty.unknown,
     options = [];
+
+    @override
+    bool operator ==(Object other){
+      return other is QuestionEntity && (
+        other.questionText == questionText &&
+        other.category == category &&
+        other.explanation == explanation &&
+        other.difficulty == difficulty &&
+        other.options.length == options.length
+      );
+    }
 }

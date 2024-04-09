@@ -5,6 +5,7 @@ import 'package:zquiz/data/repositories/question_repository.dart';
 import 'package:zquiz/env/zquiz_env.dart';
 import 'package:zquiz/interactor/contracts/datasources/question_datasource.dart';
 import 'package:zquiz/interactor/contracts/repositories/question_repository.dart';
+import 'package:zquiz/interactor/signals/game_user_signal.dart';
 
 class GetItLocator{
   static setup(){
@@ -27,6 +28,11 @@ class GetItLocator{
       QuestionRepository(
         get<IQuestionDatasource>()
       )
+    );
+
+    // public signal
+    registerSingleton<GameUserSignal>(
+      GameUserSignal()
     );
   }
 

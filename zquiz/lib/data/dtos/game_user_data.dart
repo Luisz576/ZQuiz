@@ -6,6 +6,9 @@ class GameUserData {
   final username = TextValueObject.create(minCaracters: 2, maxCaracters: 16);
   final amountOfQuestions = NumberValueObject.create(minV: 1, maxV: GameUser.maxQuestions);
 
+  bool get isValid => username.validator(null) == null
+      && amountOfQuestions.validator(null) == null;
+
   toGameUser(){
     return GameUser(
       username: username.value,

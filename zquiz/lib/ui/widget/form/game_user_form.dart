@@ -15,42 +15,55 @@ class GameUserForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          TextInput(
-            label: "Name",
-            hintText: "Insert your name",
-            valueObject: gameUserData.username,
-          ),
-          TextInput(
-            label: "Questions",
-            hintText: "Number of questions",
-            valueObject: gameUserData.amountOfQuestions,
-          ),
-          TextButton(
-            style: TextButton.styleFrom(
-              backgroundColor: ZQuizColors.primaryColor,
-              padding: const EdgeInsets.symmetric(
-                horizontal: ZquizDimensions.smallPadding,
-                vertical:  ZquizDimensions.tinyPadding
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: TextInput(
+                label: "Name",
+                hintText: "Insert your name",
+                valueObject: gameUserData.username,
+                isDigit: false,
               ),
             ),
-            onPressed: (){
-              if(formKey.currentState!.validate() && gameUserData.isValid){
-                GetItLocator.get<GameUserSignal>().setInfo(gameUserData.username.value, gameUserData.amountOfQuestions.value);
-              }
-            },
-            child: const Text(
-              "Let's GO!",
-              style: TextStyle(
-                color: ZQuizColors.whiteColor,
-                fontWeight: FontWeight.bold,
-                fontSize: ZquizDimensions.mediumFontSize
+            const SizedBox(height: ZquizDimensions.tinyPadding,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: TextInput(
+                label: "Questions",
+                hintText: "Number of questions",
+                valueObject: gameUserData.amountOfQuestions,
+                isDigit: true,
               ),
+            ),
+            const SizedBox(height: ZquizDimensions.tinyPadding,),
+            TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: ZQuizColors.primaryColor,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: ZquizDimensions.smallPadding,
+                  vertical:  ZquizDimensions.tinyPadding
+                ),
+              ),
+              onPressed: (){
+                if(formKey.currentState!.validate() && gameUserData.isValid){
+                  GetItLocator.get<GameUserSignal>().setInfo(gameUserData.username.value, gameUserData.amountOfQuestions.value);
+                }
+              },
+              child: const Text(
+                "Let's GO!",
+                style: TextStyle(
+                  color: ZQuizColors.whiteColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: ZquizDimensions.mediumFontSize
+                ),
+              )
             )
-          )
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:zquiz/interactor/vo/value_object.dart';
@@ -22,14 +20,18 @@ class TextInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       keyboardType: isDigit ? TextInputType.number : TextInputType.text,
-      inputFormatters: <TextInputFormatter>[
+      inputFormatters: isDigit ? <TextInputFormatter>[
         FilteringTextInputFormatter.digitsOnly
-      ],
+      ] : null,
       initialValue: valueObject.value.toString(),
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      validator: (v) => valueObject.validator(
-        isDigit ? v as Int : v
-      ),
+      validator: (v) {
+        if(isDigit && v != null && v.isNotEmpty){
+          // return valueObject.validator(int.parse(v));
+          return null;
+        }
+        return valueObject.validator(v);
+      },
       decoration: InputDecoration(
         labelText: label,
         focusedBorder: const OutlineInputBorder(

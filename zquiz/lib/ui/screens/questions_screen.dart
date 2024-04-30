@@ -3,6 +3,7 @@ import 'package:signals/signals_flutter.dart';
 import 'package:zquiz/get_it_locator.dart';
 import 'package:zquiz/interactor/contracts/repositories/question_repository.dart';
 import 'package:zquiz/interactor/entity/question_entity.dart';
+import 'package:zquiz/interactor/signals/game_user_signal.dart';
 import 'package:zquiz/interactor/signals/questions_signal.dart';
 import 'package:zquiz/interactor/states/questions_state.dart';
 import 'package:zquiz/ui/theme/zquiz_colors.dart';
@@ -18,7 +19,10 @@ class QuestionsScreen extends StatefulWidget {
 }
 
 class _QuestionsScreenState extends State<QuestionsScreen> {
-  final questionsSignals = QuestionSignals(GetItLocator.get<IQuestionRepository>());
+  final questionsSignals = QuestionSignals(
+    GetItLocator.get<IQuestionRepository>(),
+    GetItLocator.get<GameUserSignal>()
+  );
 
   @override
   void initState() {

@@ -12,8 +12,8 @@ class NumberValueObject implements ValueObject<int>{
 
   NumberValueObject(this._value, this.minV, this.maxV);
   factory NumberValueObject.create({
-    int? minV, int? maxV
-  }) => NumberValueObject(0, minV ?? 0, maxV ?? 99999);
+    int? minV, int? maxV, int? initialValue
+  }) => NumberValueObject(initialValue ?? 0, minV ?? 0, maxV ?? 99999);
 
   @override
   String? validator(int? value) {

@@ -26,11 +26,17 @@ class TextInput extends StatelessWidget {
       initialValue: valueObject.value.toString(),
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (v) {
-        if(isDigit && v != null && v.isNotEmpty){
-          // return valueObject.validator(int.parse(v));
-          return null;
+        if(isDigit && v != null){
+          return valueObject.validator(v.isNotEmpty ? int.parse(v) : 0);
         }
         return valueObject.validator(v);
+      },
+      onChanged: (v){
+        if(isDigit){
+          valueObject.value = v.isNotEmpty ? int.parse(v) : 0;
+          return;
+        }
+        valueObject.value = v;
       },
       decoration: InputDecoration(
         labelText: label,
